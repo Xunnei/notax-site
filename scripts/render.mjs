@@ -89,5 +89,5 @@ let removidas = 0;
 for (const f of fs.readdirSync(DIR_ARTES)) if (!usados.has(f)) { fs.unlinkSync(path.join(DIR_ARTES, f)); removidas++; }
 
 indice.sort((a, b) => Date.parse(b.quando) - Date.parse(a.quando));
-fs.writeFileSync(path.join(DIR_ARTES, 'index.json'), JSON.stringify({ gerado: new Date().toISOString(), posts: indice }, null, 1) + '\n');
+fs.writeFileSync(path.join(DIR_ARTES, 'index.json'), JSON.stringify({ posts: indice }, null, 1) + '\n');
 console.log(`✓ ${posts.length} posts · ${geradas} imagens novas · ${removidas} removidas`);
