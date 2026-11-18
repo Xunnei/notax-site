@@ -1,0 +1,15 @@
+{
+  "quando": "2026-11-20T19:00:00-03:00",
+  "tipo": "feed",
+  "status": "rascunho",
+  "legenda": "Chegou a notaX. 🥁\nCarteirinha, presença, convocação e avisos da sua escola de samba num lugar só, no celular de cada integrante.\n\nO X é a nota 10: o objetivo de todo quesito. É pra lá que a gente leva a gestão da sua escola.\n\n#escoladesamba #carnaval #bateria #gestao #notax",
+  "artes": [
+    {
+      "estilo": "capa",
+      "fmt": "q",
+      "fundo": "palco",
+      "kicker": "Gestão para escolas de samba",
+      "sub": "Carteirinha, presença, convocação e avisos num lugar só."
+    }
+  ]
+}

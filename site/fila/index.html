@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fila de posts · notaX</title>
+<meta name="description" content="Próximos posts do Instagram @gestaonotax, com data, legenda e status.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#421C6F">
+<link rel="stylesheet" href="/css/base.css">
+<style>
+  h1{font-size:clamp(24px,5vw,30px);font-weight:800;margin:26px 0 4px}
+  .lead{color:var(--muted);margin:0 0 20px;max-width:64ch}
+  .filtros{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .filtros button{background:var(--panel2);border:1px solid rgba(255,255,255,.12);color:var(--fg);border-radius:999px;padding:10px 14px;font:600 14px 'Sora',sans-serif;cursor:pointer;min-height:42px}
+  .filtros button[aria-pressed=true]{border-color:var(--gold);color:var(--gold);background:rgba(244,207,108,.14)}
+  .lista{display:grid;gap:16px;padding-bottom:48px}
+  .post{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:16px;display:grid;gap:16px}
+  @media(min-width:760px){.post{grid-template-columns:300px 1fr}}
+  .imgs{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;border-radius:12px}
+  .imgs img{flex:0 0 100%;scroll-snap-align:start;border-radius:12px;height:auto}
+  .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}
+  .tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:4px 10px;border:1px solid rgba(255,255,255,.15);color:var(--muted)}
+  .tag.aprovado{color:#9be7b0;border-color:rgba(155,231,176,.4)}
+  .tag.rascunho{color:var(--gold);border-color:var(--line)}
+  .tag.publicado{color:#fff;background:#2c7a4b;border-color:#2c7a4b}
+  .tag.pausado{color:#ff9db3;border-color:rgba(255,157,179,.4)}
+  .quando{font-weight:700}
+  .leg{white-space:pre-wrap;color:var(--sub);font-size:15px;margin:0}
+  .id{color:var(--muted);font-size:12.5px;margin-top:10px;word-break:break-all}
+  .vazio{color:var(--muted);padding:40px 0;text-align:center}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
+  <div class="nav-links"><a href="/">Início</a><a href="/estudio">Estúdio</a><a href="/fila" aria-current="page">Fila</a><a href="/marca" class="hide-sm">Marca</a></div>
+</div></nav>
+<main class="wrap">
+  <h1>Fila do @gestaonotax</h1>
+  <p class="lead">Só sai sozinho o que está <b>aprovado</b>, no horário marcado. Rascunho espera o seu “pode postar”.</p>
+  <div class="filtros" id="filtros">
+    <button type="button" data-f="proximos" aria-pressed="true">Próximos</button>
+    <button type="button" data-f="publicado" aria-pressed="false">Publicados</button>
+    <button type="button" data-f="todos" aria-pressed="false">Todos</button>
+  </div>
+  <div class="lista" id="lista"><p class="vazio">Carregando…</p></div>
+</main>
+<script>
+(function(){
+  var dados=[], filtro='proximos';
+  var fmtData=new Intl.DateTimeFormat('pt-BR',{weekday:'short',day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'America/Sao_Paulo'});
+  function esc(s){return String(s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function render(){
+    var l=dados.filter(function(p){ return filtro==='todos'||(filtro==='publicado'?!!p.publicado:!p.publicado); });
+    if(filtro!=='publicado') l=l.slice().reverse();
+    var el=document.getElementById('lista');
+    if(!l.length){ el.innerHTML='<p class="vazio">Nada por aqui.</p>'; return; }
+    el.innerHTML=l.map(function(p){
+      var st=p.publicado?'publicado':p.status;
+      var link=p.publicado&&p.publicado.permalink?' · <a href="'+esc(p.publicado.permalink)+'" target="_blank" rel="noopener">ver no Instagram</a>':'';
+      return '<article class="post"><div class="imgs">'+p.imagens.map(function(s){return '<img loading="lazy" src="'+esc(s)+'" alt="" width="1080" height="1080">';}).join('')+'</div>'+
+        '<div><div class="meta"><span class="tag '+st+'">'+st+'</span><span class="tag">'+esc(p.tipo)+(p.imagens.length>1?' · '+p.imagens.length:'')+'</span>'+
+        '<span class="quando">'+esc(fmtData.format(new Date(p.quando)))+'</span>'+link+'</div>'+
+        '<p class="leg">'+esc(p.legenda||'(story sem legenda)')+'</p><div class="id">'+esc(p.id)+'</div></div></article>';
+    }).join('');
+  }
+  document.getElementById('filtros').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; filtro=b.getAttribute('data-f');
+    this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));}); render(); });
+  fetch('/artes/index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ dados=d.posts||[]; render(); })
+    .catch(function(){ document.getElementById('lista').innerHTML='<p class="vazio">Não consegui carregar a fila.</p>'; });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /fila
+Disallow: /estudio
+Sitemap: https://notax.xunei.com.br/sitemap.xml

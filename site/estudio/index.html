@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Estúdio notaX</title>
+<meta name="description" content="Estúdio de artes da notaX: crie posts e stories na identidade da marca, prontos para o Instagram @gestaonotax.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="theme-color" content="#421C6F">
+<link rel="stylesheet" href="/css/base.css">
+<style>
+  .top{padding:26px 0 6px}
+  h1{font-size:clamp(24px,5vw,30px);font-weight:800;margin:0;letter-spacing:-.01em}
+  .lead{color:var(--muted);font-size:15px;margin:4px 0 22px;max-width:62ch}
+  .grid{display:grid;grid-template-columns:1fr;gap:22px;padding-bottom:40px}
+  @media(min-width:900px){.grid{grid-template-columns:400px 1fr;align-items:start}.prev{position:sticky;top:84px}}
+  .panel{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:20px}
+  .field{margin-bottom:16px}.field:last-child{margin-bottom:0}
+  label,.lbl{display:block;font-size:12.5px;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:.09em;margin-bottom:7px}
+  input[type=text],input[type=datetime-local],textarea,select{width:100%;background:var(--panel2);color:var(--fg);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:12px 14px;font:16px/1.35 'Sora',sans-serif}
+  textarea{resize:vertical;min-height:64px}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{flex:1 1 auto;text-align:center;background:var(--panel2);border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:10px 12px;font:600 13.5px 'Sora',sans-serif;color:var(--fg);cursor:pointer;white-space:nowrap;min-height:42px}
+  .chip[aria-pressed=true]{background:rgba(244,207,108,.16);border-color:var(--gold);color:var(--gold)}
+  .hint{font-size:12.5px;color:var(--muted);margin-top:6px}
+  details.post{margin-top:18px;border-top:1px solid rgba(255,255,255,.08);padding-top:16px}
+  details.post summary{cursor:pointer;font-weight:700;color:var(--fg);list-style:none}
+  details.post summary::before{content:'▸ ';color:var(--gold)}
+  details.post[open] summary::before{content:'▾ '}
+  .shell{background:#0e0720;border:1px solid rgba(255,255,255,.08);border-radius:var(--r);padding:14px;display:flex;justify-content:center}
+  canvas#art{width:100%;max-width:440px;height:auto;border-radius:10px;box-shadow:0 14px 40px rgba(0,0,0,.45)}
+  .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}.actions .btn{flex:1 1 auto}
+  .saida{margin-top:18px;display:none}.saida.on{display:block}
+  .saida img{width:100%;max-width:440px;margin:0 auto;border-radius:10px}
+  .dica{margin:12px auto 0;max-width:470px;background:rgba(244,207,108,.1);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--sub);text-align:center}
+  .dica b{color:var(--gold)}
+  .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--gold);color:#3a2708;font-weight:700;padding:12px 18px;border-radius:12px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+  .toast.on{opacity:1}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
+  <div class="nav-links"><a href="/">Início</a><a href="/estudio" aria-current="page">Estúdio</a><a href="/fila" class="hide-sm">Fila</a><a href="/marca">Marca</a></div>
+</div></nav>
+
+<main class="wrap">
+  <header class="top">
+    <h1>Estúdio nota<span class="x">X</span></h1>
+    <p class="lead">Artes para o <b>@gestaonotax</b> na identidade da marca. É o mesmo desenho que o site usa para gerar e postar sozinho.</p>
+  </header>
+
+  <div class="grid">
+    <form class="panel" id="f" onsubmit="return false">
+      <div class="field"><span class="lbl">Estilo</span><div class="chips" data-grupo="estilo">
+        <button type="button" class="chip" data-v="funcao">Função</button><button type="button" class="chip" data-v="lista">Lista</button>
+        <button type="button" class="chip" data-v="capa">Capa</button><button type="button" class="chip" data-v="frase">Frase</button>
+        <button type="button" class="chip" data-v="sabia">Você sabia?</button><button type="button" class="chip" data-v="novidade">Novidade</button>
+        <button type="button" class="chip" data-v="cta">Chamada</button></div></div>
+      <div class="field"><span class="lbl">Formato</span><div class="chips" data-grupo="fmt">
+        <button type="button" class="chip" data-v="q">Quadrado</button><button type="button" class="chip" data-v="f">Feed alto</button><button type="button" class="chip" data-v="s">Story</button></div></div>
+      <div class="field"><span class="lbl">Fundo</span><div class="chips" data-grupo="fundo">
+        <button type="button" class="chip" data-v="violeta">Violeta</button><button type="button" class="chip" data-v="escuro">Escuro</button><button type="button" class="chip" data-v="palco">Palco</button></div></div>
+
+      <div class="field" data-campo="kicker"><label for="kicker">Etiqueta de cima</label><input type="text" id="kicker" maxlength="28"></div>
+      <div class="field" data-campo="titulo"><label for="titulo">Título</label><textarea id="titulo" maxlength="90"></textarea></div>
+      <div class="field" data-campo="sub"><label for="sub">Texto de apoio</label><textarea id="sub" maxlength="200"></textarea></div>
+      <div class="field" data-campo="itens"><label for="itens">Itens da lista (um por linha, até 6)</label><textarea id="itens" rows="4"></textarea></div>
+      <div class="field" data-campo="pilula"><label for="pilula">Selo (opcional)</label><input type="text" id="pilula" maxlength="40"></div>
+      <div class="field" data-campo="botao"><label for="botao">Texto do botão</label><input type="text" id="botao" maxlength="32"></div>
+      <div class="field" data-campo="pagina"><label for="pagina">Página do carrossel (opcional)</label><input type="text" id="pagina" maxlength="7" placeholder="Ex.: 2/5"></div>
+
+      <details class="post">
+        <summary>Mandar para a fila de postagem</summary>
+        <div class="field" style="margin-top:14px"><label for="quando">Quando postar</label><input type="datetime-local" id="quando"></div>
+        <div class="field"><label for="legenda">Legenda do post</label><textarea id="legenda" rows="5" maxlength="2200"></textarea>
+          <p class="hint">Copie o pedido e cole na conversa com o Claude: ele põe na fila e o site posta no horário.</p></div>
+        <button type="button" class="btn btn-ghost" id="copiar" style="width:100%">📋 Copiar pedido</button>
+      </details>
+    </form>
+
+    <section class="prev" aria-label="Prévia">
+      <div class="shell"><canvas id="art" width="1080" height="1080" aria-label="Prévia da arte"></canvas></div>
+      <div class="actions">
+        <button class="btn btn-gold" id="gerar">✨ Gerar imagem</button>
+        <button class="btn btn-ghost" id="baixar">⬇️ Baixar JPG</button>
+      </div>
+      <div class="saida" id="saida">
+        <img id="out" alt="Arte gerada">
+        <div class="dica">📱 No celular: <b>segure a imagem</b> e toque em <b>“Salvar em Fotos”</b>. No computador, use <b>Baixar JPG</b>.</div>
+      </div>
+    </section>
+  </div>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script src="/js/render.js"></script>
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s);};
+  var A=window.NotaxArte;
+  var state={estilo:'funcao',fmt:'q',fundo:'violeta',kicker:'Presença',titulo:'Presença por localização',
+    sub:'No ensaio, o integrante marca presença pelo GPS. Só quem está lá consegue.',itens:'',pilula:'📍 Acabou a chamada no papel',
+    botao:'Chama no direct',pagina:'',quando:'',legenda:''};
+  var CAMPOS=['kicker','titulo','sub','itens','pilula','botao','pagina','quando','legenda'];
+  try{ var s=JSON.parse(localStorage.getItem('estudioNotax2')||'null'); if(s) Object.assign(state,s); }catch(e){}
+  // ?arte=<json> abre uma arte da fila para editar
+  try{ var q=new URLSearchParams(location.search).get('arte'); if(q) Object.assign(state,JSON.parse(q)); }catch(e){}
+  if(Array.isArray(state.itens)) state.itens=state.itens.join('\n');
+
+  var cv=$('#art');
+  function arte(){ return {estilo:state.estilo,fmt:state.fmt,fundo:state.fundo,kicker:state.kicker,titulo:state.titulo,sub:state.sub,
+    itens:String(state.itens||'').split('\n'),pilula:state.pilula,botao:state.botao,pagina:state.pagina}; }
+  function salvar(){ try{ localStorage.setItem('estudioNotax2',JSON.stringify(state)); }catch(e){} }
+  function redraw(){ A.emCanvas(cv,arte()); }
+  function toast(t){ var el=$('#toast'); el.textContent=t; el.classList.add('on'); setTimeout(function(){el.classList.remove('on');},2200); }
+
+  function campos(){
+    var e=state.estilo, show=function(n,on){ document.querySelector('[data-campo="'+n+'"]').hidden=!on; };
+    show('kicker',e!=='frase'&&e!=='sabia'&&e!=='novidade'); show('titulo',e!=='capa'); show('itens',e==='lista');
+    show('pilula',e==='funcao'||e==='novidade'||e==='sabia'); show('botao',e==='cta');
+    $('[data-campo="kicker"] label').textContent = e==='capa'?'Chamada (dourado)':'Etiqueta de cima';
+    $('[data-campo="titulo"] label').textContent = e==='sabia'?'A curiosidade':e==='frase'?'A frase':'Título';
+    $('[data-campo="sub"] label').textContent = e==='capa'?'Texto embaixo da logo':'Texto de apoio';
+  }
+  function chips(){ document.querySelectorAll('[data-grupo]').forEach(function(g){ var k=g.getAttribute('data-grupo');
+    g.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed',String(c.getAttribute('data-v')===state[k])); }); }); }
+
+  document.querySelectorAll('[data-grupo]').forEach(function(g){ g.addEventListener('click',function(ev){
+    var c=ev.target.closest('.chip'); if(!c) return; state[g.getAttribute('data-grupo')]=c.getAttribute('data-v');
+    chips(); campos(); salvar(); redraw(); }); });
+  CAMPOS.forEach(function(k){ var el=$('#'+k); el.value=state[k]||''; el.addEventListener('input',function(){ state[k]=el.value; salvar(); redraw(); }); });
+
+  function nome(){ return 'notax-'+state.estilo+'-'+state.fmt+'.jpg'; }
+  $('#gerar').addEventListener('click',function(){ redraw(); $('#out').src=cv.toDataURL('image/jpeg',.92); $('#saida').classList.add('on');
+    $('#saida').scrollIntoView({behavior:'smooth',block:'center'}); });
+  $('#baixar').addEventListener('click',function(){ redraw(); var a=document.createElement('a'); a.href=cv.toDataURL('image/jpeg',.92);
+    a.download=nome(); document.body.appendChild(a); a.click(); a.remove(); });
+  $('#copiar').addEventListener('click',function(){
+    var pedido='Põe este post na fila do @gestaonotax:\n'+JSON.stringify({quando:state.quando||null,
+      tipo:state.fmt==='s'?'story':'feed',legenda:state.legenda,artes:[arte()]},null,2);
+    var ok=function(){toast('Pedido copiado');};
+    if(navigator.clipboard&&window.isSecureContext){ navigator.clipboard.writeText(pedido).then(ok,fallback); } else fallback();
+    function fallback(){ var t=document.createElement('textarea'); t.value=pedido; document.body.appendChild(t); t.select();
+      try{ document.execCommand('copy'); ok(); }catch(e){ toast('Selecione e copie à mão'); } t.remove(); }
+  });
+
+  chips(); campos();
+  A.preparar().then(redraw);
+})();
+</script>
+</body>
+</html>

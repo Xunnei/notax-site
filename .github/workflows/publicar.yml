@@ -1,0 +1,43 @@
+# Publica o site a cada push no main: gera as artes da fila, confere e sobe no Cloudflare.
+name: Publicar site
+on:
+  push:
+    branches: [main]
+    paths: ['site/**', 'conteudo/**', 'scripts/**', 'wrangler.toml', 'package*.json', '.github/workflows/publicar.yml']
+  workflow_dispatch:
+concurrency: { group: site, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  publicar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22, cache: npm }
+      - run: npm ci
+      - name: Navegador + fonte de emoji
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-color-emoji
+          npx playwright install --with-deps chromium
+      - name: Gerar artes
+        run: node scripts/render.mjs
+      - name: Conferir
+        run: node scripts/testar.mjs
+      - name: Guardar artes geradas no repositório
+        run: |
+          git config user.name "notax-bot"; git config user.email "notax-bot@users.noreply.github.com"
+          git add site/artes site/img
+          git diff --cached --quiet || { git commit -m "artes: geradas pelo publicar"; git pull --rebase -q && git push; }
+      - name: Subir no Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npx --yes wrangler@4.148.0 deploy
+      - name: Conferir no ar
+        run: |
+          for i in 1 2 3 4 5 6; do
+            if curl -fsS "https://notax.xunei.com.br/artes/index.json?t=$(date +%s)" | cmp -s - site/artes/index.json; then echo "✓ no ar e igual ao repositório"; exit 0; fi
+            sleep 10
+          done
+          echo "::warning::O site no ar ainda não bate com o repositório (domínio ainda propagando?)"

@@ -1,0 +1,22 @@
+{
+  "quando": "2026-11-30T19:00:00-03:00",
+  "tipo": "feed",
+  "status": "rascunho",
+  "legenda": "Se a gestão da sua escola ainda depende disso tudo, a notaX resolve. 👇\nUm sistema só, no celular, com a identidade da sua escola.\n\n#escoladesamba #carnaval #bateria #gestao #notax",
+  "artes": [
+    {
+      "estilo": "lista",
+      "fmt": "f",
+      "fundo": "violeta",
+      "kicker": "Chega de",
+      "titulo": "O que a notaX aposenta",
+      "itens": [
+        "Planilha de cadastro",
+        "Chamada no papel",
+        "Lista de viagem no WhatsApp",
+        "Aviso que ninguém viu",
+        "Crachá impresso que some"
+      ]
+    }
+  ]
+}

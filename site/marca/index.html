@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Marca notaX</title>
+<meta name="description" content="Logos, símbolo, ícone e paleta oficiais da notaX, em SVG e PNG.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#421C6F">
+<link rel="stylesheet" href="/css/base.css">
+<style>
+  h1{font-size:clamp(24px,5vw,30px);font-weight:800;margin:26px 0 4px}
+  .lead{color:var(--muted);margin:0 0 26px;max-width:64ch}
+  h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin:30px 0 12px}
+  .grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr))}
+  .card{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);overflow:hidden}
+  .shot{display:flex;align-items:center;justify-content:center;min-height:170px;padding:24px}
+  .shot.v{background:var(--vio)}.shot.c{background:#f6f3ec}
+  .shot img{max-height:120px;width:auto}
+  .cap{padding:12px 16px;border-top:1px solid rgba(255,255,255,.07);display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+  .cap b{font-size:14px}
+  .cap a{font-size:13px;font-weight:700;text-decoration:none;padding:6px 10px;border-radius:8px;border:1px solid var(--line)}
+  .pal{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));padding-bottom:48px}
+  .pal div{border-radius:14px;overflow:hidden;border:1px solid rgba(255,255,255,.08);background:var(--panel)}
+  .pal i{display:block;height:70px}.pal span{display:block;padding:10px 12px;font-size:13px}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
+  <div class="nav-links"><a href="/">Início</a><a href="/estudio">Estúdio</a><a href="/marca" aria-current="page">Marca</a></div>
+</div></nav>
+<main class="wrap">
+  <h1>Marca nota<span class="x">X</span></h1>
+  <p class="lead">O X é a nota 10, o X do metrônomo e o X de Xunei. Traço único com pontas redondas, ondas douradas e o ponto vermelho da batida no centro.</p>
+  <div id="arquivos"></div>
+  <h2>Paleta</h2>
+  <div class="pal">
+    <div><i style="background:#421C6F"></i><span><b>Violeta</b><br>#421C6F</span></div>
+    <div><i style="background:#F4CF6C"></i><span><b>Ouro</b><br>#F4CF6C</span></div>
+    <div><i style="background:#C9A227"></i><span><b>Ouro em fundo claro</b><br>#C9A227</span></div>
+    <div><i style="background:#E8264F"></i><span><b>Batida</b><br>#E8264F</span></div>
+    <div><i style="background:#F1E7F9"></i><span><b>Letra</b><br>#F1E7F9</span></div>
+  </div>
+</main>
+<script>
+(function(){
+  var G=[
+    ['Logo horizontal',[['notax-horizontal-fundo-escuro','v','Fundo escuro'],['notax-horizontal-fundo-claro','c','Fundo claro']]],
+    ['Empilhado',[['notax-empilhado-fundo-escuro','v','Fundo escuro'],['notax-empilhado-fundo-claro','c','Fundo claro',1]]],
+    ['Símbolo',[['notax-simbolo-claro','v','Para fundo escuro'],['notax-simbolo-escuro','c','Para fundo claro']]],
+    ['Ícone e avatar',[['notax-icone-violeta','c','Ícone / favicon',0,'notax-icone-1024'],['notax-avatar','v','Avatar do Instagram',0,'notax-avatar-1080']]]
+  ];
+  document.getElementById('arquivos').innerHTML=G.map(function(g){ return '<h2>'+g[0]+'</h2><div class="grid">'+g[1].map(function(a){
+    var png=a[4]||a[0]; return '<div class="card"><div class="shot '+a[1]+'"><img src="/marca/'+a[0]+'.svg" alt="'+a[2]+'" loading="lazy"></div>'+
+      '<div class="cap"><b>'+a[2]+'</b><span style="display:flex;gap:6px"><a href="/marca/'+a[0]+'.svg" download>SVG</a>'+(a[3]?'':'<a href="/marca/'+png+'.png" download>PNG</a>')+'</span></div></div>'; }).join('')+'</div>'; }).join('');
+})();
+</script>
+</body>
+</html>

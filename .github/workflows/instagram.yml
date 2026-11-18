@@ -1,0 +1,55 @@
+# Posta no Instagram o que venceu na fila (status "aprovado"). 09:07, 13:07 e 19:07 de Brasília.
+name: Postar no Instagram
+on:
+  schedule:
+    - cron: '7 12,16,22 * * *'
+  workflow_dispatch:
+    inputs:
+      simular: { description: 'Só simular (não posta)', type: boolean, default: false }
+concurrency: { group: site, cancel-in-progress: false }
+permissions: { contents: write, issues: write }
+jobs:
+  postar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - name: Postar
+        id: postar
+        env:
+          IG_TOKEN: ${{ secrets.IG_TOKEN }}
+          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+        run: |
+          if [ "${{ inputs.simular }}" = "true" ]; then node scripts/postar.mjs --simular; exit 0; fi
+          if [ -z "$IG_TOKEN" ]; then echo "::notice::IG_TOKEN ainda não configurado. Nada a fazer."; exit 0; fi
+          set +e; node scripts/postar.mjs; code=$?; set -e
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          [ $code -eq 2 ] && exit 0 || exit $code
+      - name: Guardar o que foi publicado + atualizar o site
+        if: always() && steps.postar.outcome == 'success'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          git diff --quiet conteudo && exit 0
+          node scripts/render.mjs --so-indice
+          git config user.name "notax-bot"; git config user.email "notax-bot@users.noreply.github.com"
+          git add conteudo site/artes/index.json
+          git commit -m "instagram: post publicado"; git pull --rebase -q && git push
+          npx --yes wrangler@4.148.0 deploy
+      - name: Avisar post atrasado
+        if: steps.postar.outputs.code == '2'
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          t="⏰ Post da fila venceu e não foi postado"
+          gh issue list --state open --search "$t in:title" --json number -q '.[0].number' | grep -q . || \
+          gh issue create --title "$t" --body "Um post aprovado passou mais de 72h do horário sem sair (o robô não despeja post velho). Mude o \"quando\" para reagendar. Detalhes: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      - name: Avisar falha
+        if: failure()
+        env: { GH_TOKEN: '${{ github.token }}' }
+        run: |
+          t="⚠️ Postagem do Instagram falhou"
+          gh issue list --state open --search "$t in:title" --json number -q '.[0].number' | grep -q . || \
+          gh issue create --title "$t" --body "Veja o erro: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"

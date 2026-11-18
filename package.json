@@ -1,0 +1,17 @@
+{
+  "name": "notax-site",
+  "private": true,
+  "type": "module",
+  "description": "Site da marca notaX + estúdio de artes + postagem automática no Instagram @gestaonotax",
+  "scripts": {
+    "render": "node scripts/render.mjs",
+    "testar": "node scripts/testar.mjs",
+    "postar": "node scripts/postar.mjs",
+    "simular": "node scripts/postar.mjs --simular",
+    "local": "npx --yes serve@14.2.4 site -l 8787"
+  },
+  "devDependencies": {
+    "@fontsource/sora": "^5.2.8",
+    "playwright": "^1.63.0"
+  }
+}

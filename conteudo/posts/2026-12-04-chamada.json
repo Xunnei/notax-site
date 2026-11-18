@@ -1,0 +1,17 @@
+{
+  "quando": "2026-12-04T19:00:00-03:00",
+  "tipo": "feed",
+  "status": "rascunho",
+  "legenda": "Quer a notaX na sua escola? 🥁\nManda um direct: a gente mostra o sistema funcionando e monta tudo com as cores e a cara da sua escola.\n\n#escoladesamba #carnaval #bateria #gestao #notax",
+  "artes": [
+    {
+      "estilo": "cta",
+      "fmt": "q",
+      "fundo": "palco",
+      "kicker": "Sua escola",
+      "titulo": "Quer a notaX na sua escola?",
+      "sub": "Sistema com as cores e a cara da sua escola, pronto pro próximo carnaval.",
+      "botao": "Chama no direct"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "quando": "2026-11-22T19:00:00-03:00",
+  "tipo": "carrossel",
+  "status": "rascunho",
+  "legenda": "O que a notaX faz pela sua escola, em 5 telas. 👉\n\nTudo roda no celular, sem instalar nada. Diretoria monta, integrante só abre o link.\n\n#escoladesamba #carnaval #bateria #gestao #notax",
+  "artes": [
+    {
+      "estilo": "funcao",
+      "fmt": "f",
+      "fundo": "violeta",
+      "kicker": "notaX",
+      "titulo": "O que a notaX faz pela sua escola",
+      "sub": "Arrasta pro lado →",
+      "pagina": "1/5"
+    },
+    {
+      "estilo": "funcao",
+      "fmt": "f",
+      "fundo": "violeta",
+      "kicker": "Carteirinha",
+      "titulo": "Carteirinha digital oficial",
+      "sub": "Com foto, função e cores da escola. Baixa em alta pra imprimir, frente e verso.",
+      "pilula": "🪪 Nada de crachá perdido",
+      "pagina": "2/5"
+    },
+    {
+      "estilo": "funcao",
+      "fmt": "f",
+      "fundo": "violeta",
+      "kicker": "Presença",
+      "titulo": "Presença por localização",
+      "sub": "No ensaio, o integrante marca presença pelo GPS. Só quem está lá consegue.",
+      "pilula": "📍 Acabou a chamada no papel",
+      "pagina": "3/5"
+    },
+    {
+      "estilo": "funcao",
+      "fmt": "f",
+      "fundo": "violeta",
+      "kicker": "Shows e viagens",
+      "titulo": "Convocação sem confusão",
+      "sub": "Lista de quem vai, confirmação e arquivo pronto pro transporte em um toque.",
+      "pilula": "🚌 Lista pronta pra empresa",
+      "pagina": "4/5"
+    },
+    {
+      "estilo": "cta",
+      "fmt": "f",
+      "fundo": "escuro",
+      "kicker": "Sua escola",
+      "titulo": "Quer ver funcionando?",
+      "sub": "A gente mostra o sistema rodando com a sua escola.",
+      "botao": "Chama no direct",
+      "pagina": "5/5"
+    }
+  ]
+}

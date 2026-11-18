@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>notaX · Gestão para escolas de samba</title>
+<meta name="description" content="Sistema de gestão para escolas de samba: carteirinha digital, presença por localização, convocação de shows e viagens, agenda com aviso no celular e mapa da bateria.">
+<link rel="canonical" href="https://notax.xunei.com.br/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="theme-color" content="#421C6F">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="notaX">
+<meta property="og:title" content="notaX · Gestão para escolas de samba">
+<meta property="og:description" content="Carteirinha, presença, convocação e avisos da sua escola num lugar só, no celular de cada integrante.">
+<meta property="og:url" content="https://notax.xunei.com.br/">
+<meta property="og:image" content="https://notax.xunei.com.br/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" href="/fonts/sora-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/base.css">
+<style>
+  section{padding:clamp(56px,9vw,96px) 0}
+  .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+  h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
+  h1{font-size:clamp(38px,7.2vw,68px)}
+  h2{font-size:clamp(28px,4.6vw,44px)}
+  .lead{color:var(--sub);font-size:clamp(17px,2.2vw,20px);max-width:56ch;margin:18px 0 0}
+  .muted{color:var(--muted)}
+
+  .hero{position:relative;overflow:hidden;padding-top:clamp(40px,7vw,80px)}
+  .hero::before{content:'';position:absolute;inset:-30% -20% auto auto;width:900px;height:900px;border-radius:50%;
+    background:radial-gradient(closest-side,rgba(90,42,143,.75),rgba(66,28,111,.35) 55%,transparent 72%);pointer-events:none}
+  .rings{position:absolute;right:-220px;top:-220px;width:760px;height:760px;pointer-events:none;opacity:.55}
+  .hero .wrap{position:relative;display:grid;gap:48px;align-items:center}
+  @media(min-width:920px){.hero .wrap{grid-template-columns:1.05fr .95fr}}
+  .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+  .proof{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:26px;color:var(--muted);font-size:14px}
+  .proof span::before{content:'✓ ';color:var(--gold);font-weight:800}
+  .stack{position:relative;max-width:440px;margin:0 auto;width:100%;aspect-ratio:4/5}
+  .stack img{position:absolute;width:78%;height:auto;border-radius:16px;box-shadow:0 30px 70px rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.08)}
+  .stack img:nth-child(1){left:0;top:8%;transform:rotate(-6deg)}
+  .stack img:nth-child(2){right:0;top:0;transform:rotate(4deg)}
+
+  .feats{display:grid;gap:14px;margin-top:40px;grid-template-columns:1fr}
+  @media(min-width:560px){.feats{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1000px){.feats{grid-template-columns:repeat(4,1fr)}}
+  .feat{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:22px}
+  .feat .ic{font-size:26px;line-height:1;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:rgba(244,207,108,.12);border:1px solid var(--line)}
+  .feat h3{font-size:18px;margin:16px 0 6px;font-weight:700}
+  .feat p{margin:0;color:var(--muted);font-size:15px}
+  .feat.dest{background:linear-gradient(135deg,var(--vio),var(--vio3));border-color:var(--line)}
+  .feat.dest p{color:var(--sub)}
+
+  .steps{display:grid;gap:14px;margin-top:40px;counter-reset:s}
+  @media(min-width:820px){.steps{grid-template-columns:repeat(3,1fr)}}
+  .step{border-top:2px solid var(--gold);padding-top:18px}
+  .step::before{counter-increment:s;content:'0' counter(s);font-weight:800;color:var(--gold);font-size:14px;letter-spacing:.1em}
+  .step h3{font-size:20px;margin:8px 0 6px}
+  .step p{margin:0;color:var(--muted)}
+
+  .alt{background:linear-gradient(180deg,rgba(66,28,111,.35),transparent)}
+  .seg{display:grid;gap:28px;align-items:center}
+  @media(min-width:880px){.seg{grid-template-columns:1fr 1fr}}
+  .checks{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:12px}
+  .checks li{padding-left:34px;position:relative;color:var(--sub)}
+  .checks li::before{content:'';position:absolute;left:0;top:3px;width:20px;height:20px;border-radius:50%;background:rgba(244,207,108,.16);border:1.5px solid var(--gold)}
+  .checks li::after{content:'';position:absolute;left:7px;top:8px;width:6px;height:9px;border:solid var(--gold);border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .checks b{color:var(--fg)}
+
+  .ig-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:16px}
+  .ig-grid{display:grid;gap:10px;margin-top:30px;grid-template-columns:repeat(auto-fill,minmax(min(46%,220px),1fr))}
+  .ig-grid a{display:block;border-radius:12px;overflow:hidden;aspect-ratio:1;background:var(--panel);border:1px solid rgba(255,255,255,.06)}
+  .ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
+  .ig-grid a:hover img{transform:scale(1.04)}
+
+  .final{text-align:center}
+  .final .box{background:radial-gradient(120% 140% at 50% 0%,var(--vio2),var(--vio) 45%,var(--vio3));border:1px solid var(--line);border-radius:28px;padding:clamp(36px,7vw,72px) 20px}
+  .final .lead{margin-inline:auto}
+  .final .cta-row{justify-content:center}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap">
+  <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
+  <div class="nav-links"><a href="#funcoes" class="hide-sm">Funções</a><a href="#instagram" class="hide-sm">Instagram</a><a href="/estudio">Estúdio</a>
+    <a class="btn btn-gold" style="min-height:40px;padding:10px 16px;font-size:14px" data-contato href="https://ig.me/m/gestaonotax">Falar com a gente</a></div>
+</div></nav>
+
+<main>
+  <section class="hero">
+    <svg class="rings" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#F4CF6C"><circle cx="50" cy="50" r="14" stroke-width=".35" opacity=".8"/><circle cx="50" cy="50" r="24" stroke-width=".28" opacity=".55"/><circle cx="50" cy="50" r="35" stroke-width=".22" opacity=".35"/><circle cx="50" cy="50" r="47" stroke-width=".16" opacity=".2"/></g></svg>
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">Gestão para escolas de samba</p>
+        <h1>A sua escola organizada como quem busca a nota <span class="x">10</span>.</h1>
+        <p class="lead">Carteirinha, presença, convocação e avisos num sistema só, no celular de cada integrante. Com as cores e a cara da sua escola.</p>
+        <div class="cta-row">
+          <a class="btn btn-gold" data-contato href="https://ig.me/m/gestaonotax">💬 Quero na minha escola</a>
+          <a class="btn btn-ghost" href="#funcoes">Ver o que faz</a>
+        </div>
+        <div class="proof"><span>Sem instalar app</span><span>Bateria e segmentos</span><span>Já em uso no carnaval</span></div>
+      </div>
+      <div class="stack" id="heroStack" aria-hidden="true">
+        <img src="/img/vitrine-1.jpg" alt="" width="1080" height="1350">
+        <img src="/img/vitrine-2.jpg" alt="" width="1080" height="1350">
+      </div>
+    </div>
+  </section>
+
+  <section id="funcoes">
+    <div class="wrap">
+      <p class="eyebrow">O que a notaX faz</p>
+      <h2>Tudo que a diretoria faz no papel, no grupo e na planilha. Num lugar só.</h2>
+      <div class="feats">
+        <article class="feat dest"><div class="ic">🪪</div><h3>Carteirinha digital</h3><p>Foto, função e cores da escola, frente e verso. No celular de cada um e em alta qualidade para imprimir.</p></article>
+        <article class="feat"><div class="ic">📍</div><h3>Presença por localização</h3><p>No ensaio, o integrante marca presença pelo GPS. Só quem está lá consegue. Frequência e ranking saem sozinhos.</p></article>
+        <article class="feat"><div class="ic">🚌</div><h3>Shows e viagens</h3><p>Convocação, confirmação e a lista pronta para a empresa de transporte em PDF, Excel ou Word.</p></article>
+        <article class="feat"><div class="ic">🔔</div><h3>Agenda com aviso</h3><p>Ensaio, visita, show e desfile por tipo, com notificação no celular e botão para pôr no calendário.</p></article>
+        <article class="feat"><div class="ic">🗺️</div><h3>Mapa da bateria</h3><p>A diretoria monta a formação do desfile e cada ritmista vê a própria posição destacada.</p></article>
+        <article class="feat"><div class="ic">📸</div><h3>Stories da escola</h3><p>Um Instagram interno de 24 horas, com enquete, reações e corrente. Fechado para quem é da escola.</p></article>
+        <article class="feat"><div class="ic">🧒</div><h3>Escola mirim</h3><p>Responsável legal obrigatório, ficha de saúde e cartão de emergência para cada criança.</p></article>
+        <article class="feat"><div class="ic">🎮</div><h3>Jogos e ranking</h3><p>Quiz de samba e “Conheça o Sistema”: o integrante aprende a usar jogando.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <p class="eyebrow">Como funciona</p>
+      <h2>Sua escola no ar sem dor de cabeça.</h2>
+      <div class="steps">
+        <div class="step"><h3>A gente monta</h3><p>Sistema com o nome, as cores e os segmentos da sua escola, no endereço dela.</p></div>
+        <div class="step"><h3>A diretoria organiza</h3><p>Cada diretor cuida da própria ala ou naipe, com acesso por nível de cargo.</p></div>
+        <div class="step"><h3>O integrante só abre o link</h3><p>Cadastro, carteirinha e presença pelo celular. Funciona em qualquer aparelho.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap seg">
+      <div>
+        <p class="eyebrow">Segurança</p>
+        <h2>Dado de integrante é coisa séria.</h2>
+        <p class="lead">Cada escola tem o próprio banco de dados, separado das outras.</p>
+      </div>
+      <ul class="checks">
+        <li><b>CPF escondido</b> nos relatórios, liberado só para quem o cargo permite.</li>
+        <li><b>Acesso por hierarquia:</b> cada diretor vê e mexe só no que é dele.</li>
+        <li><b>Proteção contra robôs</b> no cadastro e no login.</li>
+        <li><b>Sem senha esquecida travando ninguém:</b> o integrante recupera sozinho.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="instagram" class="alt">
+    <div class="wrap">
+      <div class="ig-head">
+        <div><p class="eyebrow">No Instagram</p><h2>@gestaonotax</h2></div>
+        <a class="btn btn-ghost" href="https://www.instagram.com/gestaonotax/" target="_blank" rel="noopener">Seguir no Instagram</a>
+      </div>
+      <div class="ig-grid" id="igGrid"></div>
+    </div>
+  </section>
+
+  <section class="final">
+    <div class="wrap"><div class="box">
+      <h2>Quer a notaX na sua escola?</h2>
+      <p class="lead">A gente mostra o sistema funcionando e monta tudo com a cara da sua escola, pronto para o próximo carnaval.</p>
+      <div class="cta-row"><a class="btn btn-gold" data-contato href="https://ig.me/m/gestaonotax">💬 Chamar no direct</a></div>
+    </div></div>
+  </section>
+</main>
+
+<footer class="foot"><div class="wrap">
+  <div style="display:flex;align-items:center;gap:14px"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="100" height="60"><span>by Xunei · Sistemas de gestão</span></div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://www.instagram.com/gestaonotax/" target="_blank" rel="noopener">Instagram</a><a href="/estudio">Estúdio</a><a href="/marca">Marca</a></div>
+</div></footer>
+
+<script src="/js/config.js"></script>
+<script>
+(function(){
+  var cfg=window.NOTAX||{};
+  if(cfg.whatsapp){ var msg=encodeURIComponent('Oi! Vi o site da notaX e quero saber mais para a minha escola.');
+    document.querySelectorAll('[data-contato]').forEach(function(a){ a.href='https://wa.me/'+cfg.whatsapp+'?text='+msg; a.target='_blank'; a.rel='noopener'; }); }
+  fetch('/artes/index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
+    var agora=Date.now(), posts=(d.posts||[]).filter(function(p){return p.status!=='rascunho';});
+    var noAr=posts.filter(function(p){return p.publicado||Date.parse(p.quando)<=agora;});
+    var feed=(noAr.length?noAr:posts).filter(function(p){return p.tipo!=='story';});
+    var g=document.getElementById('igGrid');
+    if(!feed.length){ document.getElementById('instagram').hidden=true; } else {
+      g.innerHTML=feed.slice(0,8).map(function(p){
+        var href=(p.publicado&&p.publicado.permalink)||'https://www.instagram.com/gestaonotax/';
+        var alt=(p.legenda||'').split('\n')[0].replace(/"/g,'&quot;');
+        return '<a href="'+href+'" target="_blank" rel="noopener"><img loading="lazy" src="'+p.imagens[0]+'" alt="'+alt+'" width="1080" height="1080"></a>';
+      }).join('');
+    }
+  }).catch(function(){ document.getElementById('instagram').hidden=true; });
+})();
+</script>
+</body>
+</html>
