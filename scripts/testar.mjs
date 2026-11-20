@@ -12,8 +12,11 @@ for (const { id, arquivo, post } of posts) {
   validar(post, arquivo).forEach((e) => falha(`${id}: ${e}`));
   post.artes?.forEach((a, i) => { if (!fs.existsSync(path.join(DIR_ARTES, nomeImagem(id, i, a)))) falha(`${id}: falta imagem ${i + 1} (rode npm run render)`); });
 }
-const idx = JSON.parse(fs.readFileSync(path.join(DIR_ARTES, 'index.json'), 'utf8'));
-if (idx.posts.length !== posts.length) falha('site/artes/index.json desatualizado (rode npm run render)');
+const fila = JSON.parse(fs.readFileSync(path.join(RAIZ, 'site', 'fila', 'dados.json'), 'utf8'));
+if (fila.posts.length !== posts.length) falha('site/fila/dados.json desatualizado (rode npm run render)');
+const pub = JSON.parse(fs.readFileSync(path.join(DIR_ARTES, 'index.json'), 'utf8'));
+if (pub.posts.some((p) => !p.publicado || p.status)) falha('site/artes/index.json público não pode ter rascunho/agendado');
+if (pub.posts.length !== posts.filter((p) => p.post.publicado).length) falha('site/artes/index.json desatualizado');
 
 // 2) páginas: título, descrição, sem travessão no texto público, links internos existem
 const SITE = path.join(RAIZ, 'site');

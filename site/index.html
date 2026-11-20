@@ -48,7 +48,17 @@
   .feat{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:22px}
   .feat .ic{font-size:26px;line-height:1;width:52px;height:52px;display:grid;place-items:center;border-radius:14px;background:rgba(244,207,108,.12);border:1px solid var(--line)}
   .feat h3{font-size:18px;margin:16px 0 6px;font-weight:700}
+  .feat{display:flex;flex-direction:column}
   .feat p{margin:0;color:var(--muted);font-size:15px}
+  .feat details{margin-top:auto;padding-top:14px}
+  .feat summary{cursor:pointer;list-style:none;color:var(--gold);font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:6px;min-height:40px}
+  .feat summary::-webkit-details-marker{display:none}
+  .feat summary::after{content:'';width:7px;height:7px;border:solid currentColor;border-width:0 2px 2px 0;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+  .feat details[open] summary::after{transform:rotate(-135deg) translateY(-2px)}
+  .feat details[open] summary{font-size:0}.feat details[open] summary::before{content:'Ver menos';font-size:14px}
+  .feat ul{margin:6px 0 0;padding-left:18px;color:var(--sub);font-size:14.5px;display:grid;gap:7px}
+  .feat li::marker{color:var(--gold)}
+
   .feat.dest{background:linear-gradient(135deg,var(--vio),var(--vio3));border-color:var(--line)}
   .feat.dest p{color:var(--sub)}
 
@@ -83,7 +93,7 @@
 <body>
 <nav class="nav"><div class="wrap">
   <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
-  <div class="nav-links"><a href="#funcoes" class="hide-sm">Funções</a><a href="#instagram" class="hide-sm">Instagram</a><a href="/estudio">Estúdio</a>
+  <div class="nav-links"><a href="#funcoes" class="hide-sm">Funções</a><a href="#instagram" class="hide-sm">Instagram</a>
     <a class="btn btn-gold" style="min-height:40px;padding:10px 16px;font-size:14px" data-contato href="https://ig.me/m/gestaonotax">Falar com a gente</a></div>
 </div></nav>
 
@@ -113,14 +123,14 @@
       <p class="eyebrow">O que a notaX faz</p>
       <h2>Tudo que a diretoria faz no papel, no grupo e na planilha. Num lugar só.</h2>
       <div class="feats">
-        <article class="feat dest"><div class="ic">🪪</div><h3>Carteirinha digital</h3><p>Foto, função e cores da escola, frente e verso. No celular de cada um e em alta qualidade para imprimir.</p></article>
-        <article class="feat"><div class="ic">📍</div><h3>Presença por localização</h3><p>No ensaio, o integrante marca presença pelo GPS. Só quem está lá consegue. Frequência e ranking saem sozinhos.</p></article>
-        <article class="feat"><div class="ic">🚌</div><h3>Shows e viagens</h3><p>Convocação, confirmação e a lista pronta para a empresa de transporte em PDF, Excel ou Word.</p></article>
-        <article class="feat"><div class="ic">🔔</div><h3>Agenda com aviso</h3><p>Ensaio, visita, show e desfile por tipo, com notificação no celular e botão para pôr no calendário.</p></article>
-        <article class="feat"><div class="ic">🗺️</div><h3>Mapa da bateria</h3><p>A diretoria monta a formação do desfile e cada ritmista vê a própria posição destacada.</p></article>
-        <article class="feat"><div class="ic">📸</div><h3>Stories da escola</h3><p>Um Instagram interno de 24 horas, com enquete, reações e corrente. Fechado para quem é da escola.</p></article>
-        <article class="feat"><div class="ic">🧒</div><h3>Escola mirim</h3><p>Responsável legal obrigatório, ficha de saúde e cartão de emergência para cada criança.</p></article>
-        <article class="feat"><div class="ic">🎮</div><h3>Jogos e ranking</h3><p>Quiz de samba e “Conheça o Sistema”: o integrante aprende a usar jogando.</p></article>
+        <article class="feat dest"><div class="ic">🪪</div><h3>Carteirinha digital</h3><p>Foto, função e cores da escola, frente e verso. No celular de cada um e em alta qualidade para imprimir.</p><details><summary>Ver mais</summary><ul><li>Cada integrante vê a própria carteirinha no celular, na Minha Área</li><li>Nome, foto, função, segmento ou naipe, com as cores e a logo da escola</li><li>Cores especiais por cargo: mestre, diretoria, rainha de bateria e gestão</li><li>Frente e verso em alta resolução, em PNG ou PDF, pronta para a gráfica</li><li>Carteirinhas de honra para beneméritos e homenageados, sem precisar de login</li><li>O cadastro só vale depois que a diretoria aprova</li></ul></details></article>
+        <article class="feat"><div class="ic">📍</div><h3>Presença por localização</h3><p>No ensaio, o integrante marca presença pelo GPS. Só quem está lá consegue. Frequência e ranking saem sozinhos.</p><details><summary>Ver mais</summary><ul><li>O diretor abre a chamada na hora e escolhe quanto tempo fica aberta e o raio, de 20 a 300 metros</li><li>O integrante toca em “marcar presença” e o celular confirma que ele está no local</li><li>Quem está longe do local não consegue marcar</li><li>Ensaio de teste não entra nas contas</li><li>Frequência de cada pessoa e ranking de presença calculados sozinhos</li><li>A diretoria vê na hora quem já marcou em cada chamada</li></ul></details></article>
+        <article class="feat"><div class="ic">🚌</div><h3>Shows e viagens</h3><p>Convocação, confirmação e a lista pronta para a empresa de transporte em PDF, Excel ou Word.</p><details><summary>Ver mais</summary><ul><li>A diretoria cria o show ou a viagem e convoca quem vai</li><li>Cada integrante vê a convocação no celular</li><li>Lista com nome, CPF e RG pronta para a empresa de transporte e para o evento</li><li>Arquivo em PDF, Excel ou Word com a identidade da escola</li><li>Filtro por função e naipe para montar a lista rápido</li><li>Nos outros relatórios, o CPF sai escondido</li></ul></details></article>
+        <article class="feat"><div class="ic">🔔</div><h3>Agenda com aviso</h3><p>Ensaio, visita, show e desfile por tipo, com notificação no celular e botão para pôr no calendário.</p><details><summary>Ver mais</summary><ul><li>8 tipos de compromisso com cores: ensaio geral, de canto, de rua, visita, festa, evento oficial, desfile e outros</li><li>Campo de “quem deve ir” e observações em cada compromisso</li><li>Notificação no celular de quem precisa saber</li><li>Botão para adicionar ao calendário do celular, com lembrete 2 horas antes</li><li>Agenda completa ou de um evento só em PDF, Excel ou Word</li><li>Só quem é da escola vê: nada fica público</li></ul></details></article>
+        <article class="feat"><div class="ic">🗺️</div><h3>Mapa da bateria</h3><p>A diretoria monta a formação do desfile e cada ritmista vê a própria posição destacada.</p><details><summary>Ver mais</summary><ul><li>Visão de cima da bateria, com os dois lados e os corredores</li><li>A diretoria toca na casa, escolhe o instrumento e quem toca ali</li><li>Arrasta para trocar duas pessoas de lugar</li><li>Cada instrumento com uma cor, e mestres e diretores com foto</li><li>O ritmista vê o mapa inteiro com a casa dele piscando e é avisado se a posição mudar</li><li>Mapa para imprimir em PDF ou imagem, completo ou por naipe</li></ul></details></article>
+        <article class="feat"><div class="ic">📸</div><h3>Stories da escola</h3><p>Um Instagram interno de 24 horas, com enquete, reações e corrente. Fechado para quem é da escola.</p><details><summary>Ver mais</summary><ul><li>Stories que somem em 24 horas, só para quem é da escola</li><li>Editor com filtros, texto, figurinhas e desenho</li><li>Caixinhas de enquete, “Eu vou!”, pergunta, quiz e contagem regressiva</li><li>Reações, “visto por” e marcação de pessoas</li><li>Melhores amigos e correntes do tipo “sua vez”</li><li>Denúncia e moderação pela gestão; selo azul para a diretoria</li></ul></details></article>
+        <article class="feat"><div class="ic">🧒</div><h3>Escola mirim</h3><p>Responsável legal obrigatório, ficha de saúde e cartão de emergência para cada criança.</p><details><summary>Ver mais</summary><ul><li>Menor de 18 anos só se cadastra com um responsável legal</li><li>Ficha de saúde: tipo sanguíneo, alergias, remédios, plano ou SUS e contato de emergência</li><li>Cartão de emergência junto da carteirinha</li><li>QR de emergência no verso, que só abre com o login da direção</li><li>Lista de responsáveis e fichas de saúde em Excel ou PDF</li><li>A direção aprova cada cadastro</li></ul></details></article>
+        <article class="feat"><div class="ic">🎮</div><h3>Jogos e ranking</h3><p>Quiz de samba e “Conheça o Sistema”: o integrante aprende a usar jogando.</p><details><summary>Ver mais</summary><ul><li>Jogo da memória com os rostos do próprio elenco</li><li>Quiz de samba e carnaval e verdadeiro ou falso</li><li>“Conheça o Sistema”: perguntas sobre o app, para aprender usando</li><li>As perguntas mudam todo dia e não se repetem para a mesma pessoa</li><li>Ranking com os melhores de cada jogo</li><li>Jogo próprio para mestres e diretores</li></ul></details></article>
       </div>
     </div>
   </section>
@@ -174,7 +184,7 @@
 
 <footer class="foot"><div class="wrap">
   <div style="display:flex;align-items:center;gap:14px"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="100" height="60"><span>by Xunei · Sistemas de gestão</span></div>
-  <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://www.instagram.com/gestaonotax/" target="_blank" rel="noopener">Instagram</a><a href="/estudio">Estúdio</a><a href="/marca">Marca</a></div>
+  <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="https://www.instagram.com/gestaonotax/" target="_blank" rel="noopener">Instagram</a><a href="/marca">Marca</a></div>
 </div></footer>
 
 <script src="/js/config.js"></script>
@@ -184,9 +194,7 @@
   if(cfg.whatsapp){ var msg=encodeURIComponent('Oi! Vi o site da notaX e quero saber mais para a minha escola.');
     document.querySelectorAll('[data-contato]').forEach(function(a){ a.href='https://wa.me/'+cfg.whatsapp+'?text='+msg; a.target='_blank'; a.rel='noopener'; }); }
   fetch('/artes/index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
-    var agora=Date.now(), posts=(d.posts||[]).filter(function(p){return p.status!=='rascunho';});
-    var noAr=posts.filter(function(p){return p.publicado||Date.parse(p.quando)<=agora;});
-    var feed=(noAr.length?noAr:posts).filter(function(p){return p.tipo!=='story';});
+    var feed=(d.posts||[]).filter(function(p){return p.publicado&&p.tipo!=='story';});
     var g=document.getElementById('igGrid');
     if(!feed.length){ document.getElementById('instagram').hidden=true; } else {
       g.innerHTML=feed.slice(0,8).map(function(p){

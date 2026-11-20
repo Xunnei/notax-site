@@ -27,7 +27,7 @@ jobs:
       - name: Guardar artes geradas no repositório
         run: |
           git config user.name "notax-bot"; git config user.email "notax-bot@users.noreply.github.com"
-          git add site/artes site/img
+          git add site/artes site/img site/fila
           git diff --cached --quiet || { git commit -m "artes: geradas pelo publicar"; git pull --rebase -q && git push; }
       - name: Subir no Cloudflare
         env:

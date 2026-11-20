@@ -68,7 +68,7 @@
   }
   document.getElementById('filtros').addEventListener('click',function(e){ var b=e.target.closest('button'); if(!b) return; filtro=b.getAttribute('data-f');
     this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));}); render(); });
-  fetch('/artes/index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ dados=d.posts||[]; render(); })
+  fetch('/fila/dados.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){ dados=d.posts||[]; render(); })
     .catch(function(){ document.getElementById('lista').innerHTML='<p class="vazio">Não consegui carregar a fila.</p>'; });
 })();
 </script>
