@@ -27,3 +27,14 @@ Os sistemas das escolas vivem em outro repositório (`xunnei/sistemas-escolas`);
 
 ## Segredos (Settings → Secrets → Actions)
 `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `IG_TOKEN`, `IG_USER_ID` (opcional), `GH_SEGREDOS_TOKEN` (renovar o IG_TOKEN). Nunca pedir nem receber os valores na conversa.
+
+## Estado atual e pendências do dono (atualizado em 21/11/2026)
+**Feito:** site no ar em `notax.xunei.com.br` (worker `notax`, publica sozinho pelo `publicar.yml`); segredos `CLOUDFLARE_API_TOKEN`/`CLOUDFLARE_ACCOUNT_ID` salvos (token só da zona xunei.com.br); 8 cards com "Ver mais"; Estúdio fora do menu; lista pública (`site/artes/index.json`) só com posts publicados, a fila lê `site/fila/dados.json`. **Cadeado Cloudflare Access LIGADO** em `/estudio` e `/fila` (app "auto-hospedado", política `So o dono` = só o e-mail do dono, sessão 1 mês; ele entra pelo login Microsoft/Hotmail, o código por e-mail cai no lixo eletrônico). Faltava o dono confirmar que `/fila` pede login e que a página inicial abre sem login.
+
+**Ao voltar, LEMBRAR o dono destas pendências (ele pediu):**
+1. **Marca aberta ou fechada?** (recomendado: aberta, link só no rodapé, como já está). Benefícios já explicados: parceiros/imprensa usam a logo certa, profissionalismo, risco baixo.
+2. **Token do Instagram** (liga o robô): developers.facebook.com → Criar app `notaX Postagem` → caso de uso Instagram → "API setup with Instagram login" → Add account @gestaonotax → segredo `IG_TOKEN`. Guiar clique a clique com prints. Pode pedir convite de testador no app do Instagram.
+3. **Renovação do token:** segredo `GH_SEGREDOS_TOKEN` (fine-grained, só este repo, Secrets: Read and write).
+4. **Aprovar os 9 rascunhos** ("pode postar") — as datas (20/11 a 04/12) venceram/vão vencer: REAGENDAR antes de aprovar.
+5. **Posso citar escolas clientes** (Beija-Flor etc.)? Hoje não cita nenhuma.
+6. **WhatsApp** para os botões (`site/js/config.js`) ou fica o direct do Instagram.
