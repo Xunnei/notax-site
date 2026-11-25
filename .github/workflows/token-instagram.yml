@@ -18,6 +18,7 @@ jobs:
           REPO: ${{ github.repository }}
         run: |
           [ -z "$IG_TOKEN" ] && { echo "::notice::IG_TOKEN não configurado."; exit 0; }
+          case "$IG_TOKEN" in IG*) ;; *) echo "::notice::Token do usuário do sistema (não vence). Nada a renovar."; exit 0;; esac
           [ -z "$GH_TOKEN" ] && { echo "::error::Falta o segredo GH_SEGREDOS_TOKEN para regravar o token."; exit 1; }
           r=$(curl -fsS "https://graph.instagram.com/refresh_access_token?grant_type=ig_refresh_token&access_token=$IG_TOKEN")
           novo=$(echo "$r" | jq -r '.access_token // empty'); dias=$(( $(echo "$r" | jq -r '.expires_in // 0') / 86400 ))

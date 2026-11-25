@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       simular: { description: 'Só simular (não posta)', type: boolean, default: false }
+      conferir: { description: 'Só conferir se o token entra no @gestaonotax (não posta)', type: boolean, default: false }
 concurrency: { group: site, cancel-in-progress: false }
 permissions: { contents: write, issues: write }
 jobs:
@@ -20,10 +21,11 @@ jobs:
         id: postar
         env:
           IG_TOKEN: ${{ secrets.IG_TOKEN }}
-          IG_USER_ID: ${{ secrets.IG_USER_ID }}
+          IG_USER_ID: '17841480891596692' # ID público do @gestaonotax (o robô confere o nome antes de postar)
         run: |
           if [ "${{ inputs.simular }}" = "true" ]; then node scripts/postar.mjs --simular; exit 0; fi
           if [ -z "$IG_TOKEN" ]; then echo "::notice::IG_TOKEN ainda não configurado. Nada a fazer."; exit 0; fi
+          if [ "${{ inputs.conferir }}" = "true" ]; then node scripts/postar.mjs --conferir; exit 0; fi
           set +e; node scripts/postar.mjs; code=$?; set -e
           echo "code=$code" >> "$GITHUB_OUTPUT"
           [ $code -eq 2 ] && exit 0 || exit $code
