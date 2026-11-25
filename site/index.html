@@ -21,6 +21,7 @@
 <link rel="stylesheet" href="/css/base.css">
 <style>
   section{padding:clamp(56px,9vw,96px) 0}
+  section[id]{scroll-margin-top:78px}
   .eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
   h1,h2{font-weight:800;letter-spacing:-.02em;line-height:1.08;margin:0;text-wrap:balance}
   h1{font-size:clamp(38px,7.2vw,68px)}
@@ -89,6 +90,22 @@
   .ig-grid img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
   .ig-grid a:hover img{transform:scale(1.04)}
 
+  .planos{display:grid;gap:14px;margin-top:40px;grid-template-columns:1fr}
+  @media(min-width:560px){.planos{grid-template-columns:repeat(2,1fr)}}
+  @media(min-width:1040px){.planos{grid-template-columns:repeat(4,1fr)}}
+  .plano{background:var(--panel);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+  .plano.dest{background:linear-gradient(135deg,var(--vio),var(--vio3));border-color:var(--gold)}
+  .plano .tag{font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);min-height:17px}
+  .plano h3{font-size:19px;margin:10px 0 0;font-weight:700}
+  .plano .preco{margin:16px 0 0;line-height:1;font-size:34px;font-weight:800;letter-spacing:-.02em}
+  .plano .preco small{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:0}
+  .plano .fund{margin:10px 0 0;font-size:13.5px;color:var(--gold);font-weight:600}
+  .plano p{margin:16px 0 0;color:var(--muted);font-size:14.5px}
+  .fundador{margin-top:34px;background:rgba(244,207,108,.08);border:1px solid var(--line);border-radius:var(--r);padding:24px clamp(18px,3vw,30px)}
+  .fundador h3{margin:0;font-size:20px;font-weight:700}
+  .fundador p{margin:10px 0 0;color:var(--sub);font-size:15.5px;max-width:62ch}
+  .planos-regras{margin-top:30px}
+
   .final{text-align:center}
   .final .box{background:radial-gradient(120% 140% at 50% 0%,var(--vio2),var(--vio) 45%,var(--vio3));border:1px solid var(--line);border-radius:28px;padding:clamp(36px,7vw,72px) 20px}
   .final .lead{margin-inline:auto}
@@ -98,7 +115,7 @@
 <body>
 <nav class="nav"><div class="wrap">
   <a class="nav-logo" href="/" aria-label="notaX, início"><img src="/marca/notax-horizontal-fundo-escuro.svg" alt="notaX" width="120" height="72"></a>
-  <div class="nav-links"><a href="#funcoes" class="hide-sm">Funções</a><a href="#instagram" class="hide-sm">Instagram</a>
+  <div class="nav-links"><a href="#funcoes" class="hide-sm">Funções</a><a href="#planos" class="hide-sm">Planos</a><a href="#instagram" class="hide-sm" id="navInsta">Instagram</a>
     <a class="btn btn-gold" style="min-height:40px;padding:10px 16px;font-size:14px" data-contato href="https://ig.me/m/gestaonotax">Falar com a gente</a></div>
 </div></nav>
 
@@ -180,6 +197,62 @@
     </div>
   </section>
 
+  <section id="planos">
+    <div class="wrap">
+      <p class="eyebrow">Planos</p>
+      <h2>Preço claro, sem pegadinha.</h2>
+      <p class="lead">Trinta dias para experimentar de graça, com a sua escola de verdade dentro. Sem fidelidade e sem multa para sair.</p>
+
+      <div class="planos">
+        <div class="plano">
+          <span class="tag"></span>
+          <h3>notaX Bateria</h3>
+          <div class="preco">R$ 199 <small>/mês</small></div>
+          <div class="fund">R$ 119 no 1º ano como fundadora</div>
+          <p>Carteirinha, presença por localização, convocação de shows e viagens, mapa do desfile e controle dos instrumentos.</p>
+        </div>
+
+        <div class="plano">
+          <span class="tag"></span>
+          <h3>notaX Segmentos</h3>
+          <div class="preco">R$ 299 <small>/mês</small></div>
+          <div class="fund">R$ 179 no 1º ano como fundadora</div>
+          <p>Alas, segmentos e diretoria. Cadastro, carteirinha, presença, agenda com aviso e relatórios.</p>
+        </div>
+
+        <div class="plano dest">
+          <span class="tag">A escola inteira</span>
+          <h3>notaX Completo</h3>
+          <div class="preco">R$ 449 <small>/mês</small></div>
+          <div class="fund">R$ 269 no 1º ano como fundadora</div>
+          <p>Bateria e Segmentos juntos: a escola inteira, com tudo o que existe hoje e tudo o que a gente lançar depois.</p>
+        </div>
+
+        <div class="plano">
+          <span class="tag"></span>
+          <h3>notaX Mirim</h3>
+          <div class="preco">R$ 149 <small>/mês</small></div>
+          <div class="fund">R$ 89 no 1º ano como fundadora</div>
+          <p>Escola mirim, com responsável legal obrigatório, ficha de saúde da criança e cartão de emergência.</p>
+        </div>
+      </div>
+
+      <div class="fundador">
+        <h3>🏅 Preço de fundadora</h3>
+        <p>As cinco primeiras escolas pagam metade no primeiro ano. Em troca, autorizam a notaX a dizer o nome da escola e gravam um depoimento curto. Depois do primeiro ano, elas ficam com desconto permanente enquanto continuarem conosco.</p>
+      </div>
+
+      <ul class="checks planos-regras">
+        <li><b>No plano anual você paga 10 meses e leva 12.</b></li>
+        <li><b>Implantação de R$ 390</b> no plano mensal. No anual, por nossa conta.</li>
+        <li><b>A gente monta tudo:</b> nome, cores, segmentos e naipes da sua escola, no endereço dela.</li>
+        <li><b>Sem fidelidade.</b> Saiu, levamos os seus dados embora com você.</li>
+      </ul>
+
+      <div class="cta-row"><a class="btn btn-gold" data-contato href="https://ig.me/m/gestaonotax">💬 Quero na minha escola</a></div>
+    </div>
+  </section>
+
   <section id="instagram" class="alt">
     <div class="wrap">
       <div class="ig-head">
@@ -208,19 +281,21 @@
 <script>
 (function(){
   var cfg=window.NOTAX||{};
+  function esconderInsta(){ var s=document.getElementById('instagram'); if(s) s.hidden=true;
+    var n=document.getElementById('navInsta'); if(n) n.hidden=true; }
   if(cfg.whatsapp){ var msg=encodeURIComponent('Oi! Vi o site da notaX e quero saber mais para a minha escola.');
     document.querySelectorAll('[data-contato]').forEach(function(a){ a.href='https://wa.me/'+cfg.whatsapp+'?text='+msg; a.target='_blank'; a.rel='noopener'; }); }
   fetch('/artes/index.json',{cache:'no-cache'}).then(function(r){return r.json();}).then(function(d){
     var feed=(d.posts||[]).filter(function(p){return p.publicado&&p.tipo!=='story';});
     var g=document.getElementById('igGrid');
-    if(!feed.length){ document.getElementById('instagram').hidden=true; } else {
+    if(!feed.length){ esconderInsta(); } else {
       g.innerHTML=feed.slice(0,8).map(function(p){
         var href=(p.publicado&&p.publicado.permalink)||'https://www.instagram.com/gestaonotax/';
         var alt=(p.legenda||'').split('\n')[0].replace(/"/g,'&quot;');
         return '<a href="'+href+'" target="_blank" rel="noopener"><img loading="lazy" src="'+p.imagens[0]+'" alt="'+alt+'" width="1080" height="1080"></a>';
       }).join('');
     }
-  }).catch(function(){ document.getElementById('instagram').hidden=true; });
+  }).catch(function(){ esconderInsta(); });
 })();
 </script>
 </body>
