@@ -6,7 +6,7 @@ import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 const { chromium } = createRequire(import.meta.url)('playwright');
-import { RAIZ, DIR_ARTES, lerPosts, validar, nomeImagem } from './lib.mjs';
+import { RAIZ, DIR_ARTES, lerPosts, validar, nomeImagem, hashArte } from './lib.mjs';
 
 const SITE = path.join(RAIZ, 'site');
 const TIPOS_MIME = { '.js': 'text/javascript', '.css': 'text/css', '.woff2': 'font/woff2', '.svg': 'image/svg+xml' };
@@ -73,14 +73,16 @@ for (const { id, post } of posts) {
     publicado: post.publicado ? { em: post.publicado.em, permalink: post.publicado.permalink || null } : null,
   });
 }
-// artes fixas da vitrine (página inicial)
+// artes fixas da vitrine (página inicial): só regera quando a arte ou o desenho mudam
 const vitrine = SO_INDICE ? [] : JSON.parse(fs.readFileSync(path.join(RAIZ, 'conteudo', 'vitrine.json'), 'utf8')).artes;
-
-for (let i = 0; i < vitrine.length; i++) {
-  const dataUrl = await (await pagina()).evaluate((arte) => window.NotaxArte.emCanvas(document.getElementById('c'), arte).toDataURL('image/jpeg', 0.88), vitrine[i]);
-  const destino = path.join(RAIZ, 'site', 'img', `vitrine-${i + 1}.jpg`);
-  const buf = Buffer.from(dataUrl.split(',')[1], 'base64');
-  if (!fs.existsSync(destino) || !buf.equals(fs.readFileSync(destino))) fs.writeFileSync(destino, buf);
+const selo = path.join(RAIZ, 'site', 'img', 'vitrine.hash');
+const hashVitrine = vitrine.map((a) => hashArte(a)).join(',');
+if (vitrine.length && !(fs.existsSync(selo) && fs.readFileSync(selo, 'utf8') === hashVitrine)) {
+  for (let i = 0; i < vitrine.length; i++) {
+    const dataUrl = await (await pagina()).evaluate((arte) => window.NotaxArte.emCanvas(document.getElementById('c'), arte).toDataURL('image/jpeg', 0.88), vitrine[i]);
+    fs.writeFileSync(path.join(RAIZ, 'site', 'img', `vitrine-${i + 1}.jpg`), Buffer.from(dataUrl.split(',')[1], 'base64'));
+  }
+  fs.writeFileSync(selo, hashVitrine);
 }
 if (browser) { await browser.close(); s.close(); }
 
