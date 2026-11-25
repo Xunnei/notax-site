@@ -34,7 +34,7 @@ Os sistemas das escolas vivem em outro repositório (`xunnei/sistemas-escolas`);
 **Decisões do dono (25/11/2026):** página Marca ABERTA (link só no rodapé). **Pode citar: Beija-Flor de Nilópolis, Botafogo Samba Clube e Tubarão de Mesquita** (só essas; Mocidade e outras NÃO). WhatsApp dos botões: `5521964107663` em `site/js/config.js`. Seção "Quem já usa" na página inicial + post `2026-11-30-quem-usa`. Fila reagendada de 26/11 a 12/12 (10 rascunhos).
 
 **Ao voltar, LEMBRAR o dono destas pendências:**
-1. **"Pode postar"** dos 10 rascunhos (prévia em `/fila`). Se as datas vencerem de novo, reagendar.
+1. ~~"Pode postar"~~ FEITO em 25/11: os 10 posts (26/11 a 12/12) estão `aprovado`. Só saem quando o `IG_TOKEN` existir; post vencido há mais de 72h não sai sozinho (reagendar).
 2. **Token do Instagram** (liga o robô): developers.facebook.com → Criar app `notaX Postagem` → caso de uso Instagram → "API setup with Instagram login" → Add account @gestaonotax → segredo `IG_TOKEN`. Guiar clique a clique com prints. Pode pedir convite de testador no app do Instagram.
 3. **Renovação do token:** segredo `GH_SEGREDOS_TOKEN` (fine-grained, só este repo, Secrets: Read and write).
 4. Teste do cadeado: `/fila` pede login e a página inicial abre direto (não confirmado).
