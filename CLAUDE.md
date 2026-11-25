@@ -35,6 +35,8 @@ Os sistemas das escolas vivem em outro repositório (`xunnei/sistemas-escolas`);
 
 **Ao voltar, LEMBRAR o dono destas pendências:**
 1. ~~"Pode postar"~~ FEITO em 25/11: os 10 posts (26/11 a 12/12) estão `aprovado`. Só saem quando o `IG_TOKEN` existir; post vencido há mais de 72h não sai sozinho (reagendar).
-2. **Token do Instagram** (liga o robô): developers.facebook.com → Criar app `notaX Postagem` → caso de uso Instagram → "API setup with Instagram login" → Add account @gestaonotax → segredo `IG_TOKEN`. Guiar clique a clique com prints. Pode pedir convite de testador no app do Instagram.
-3. **Renovação do token:** segredo `GH_SEGREDOS_TOKEN` (fine-grained, só este repo, Secrets: Read and write).
+2. ~~Token do Instagram~~ FEITO em 25/11: app Meta `notaX Postagem` (ID 1514125850573240), caso de uso Instagram com **login unificado**, ligado ao portfólio **Xunei** (o @gestaonotax foi adicionado ao portfólio). Token de **usuário do sistema** (começa com EAA, **não vence**) salvo em `IG_TOKEN`; robô usa graph.facebook.com e `IG_USER_ID=17841480891596692` (fixo no instagram.yml). Robô CONFERE que a conta é @gestaonotax antes de postar. Teste "conferir" passou (25/11). Se precisar gerar de novo: developers.facebook.com → app → Casos de uso → Personalizar → API setup with Unified login → etapa 2 → Gerar token (em janela anônima, logado no Facebook pessoal "Junior Xunei"; o navegador normal fica preso na conta empresarial). Botão de teste: Actions → Postar no Instagram → Run workflow → "conferir".
+3. ~~Renovação~~ NÃO precisa: token não vence (`token-instagram.yml` só age se o token começar com "IG").
+5. **1º post real: 26/11 às 19h07** (apresentação). Conferir se saiu; se falhar, o robô abre Issue "⚠️ Postagem do Instagram falhou". Risco conhecido: app em modo Desenvolvimento/não publicado pode barrar a publicação; aí avaliar publicar o app.
+6. Há um PR aberto por OUTRA conversa: "Seção de Planos na página inicial" (branch `claude/planos-e-topo`). Não mexer sem o dono pedir; avisar que ele existe.
 4. Teste do cadeado: `/fila` pede login e a página inicial abre direto (não confirmado).
