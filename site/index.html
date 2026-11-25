@@ -69,6 +69,11 @@
   .step h3{font-size:20px;margin:8px 0 6px}
   .step p{margin:0;color:var(--muted)}
 
+  .escolas{display:grid;gap:14px;margin-top:36px}
+  @media(min-width:820px){.escolas{grid-template-columns:repeat(3,1fr)}}
+  .escola{border:1px solid var(--line);border-radius:var(--r);padding:24px;background:linear-gradient(160deg,rgba(66,28,111,.55),rgba(49,21,81,.25))}
+  .escola h3{margin:0 0 8px;font-size:20px}
+  .escola p{margin:0;color:var(--muted)}
   .alt{background:linear-gradient(180deg,rgba(66,28,111,.35),transparent)}
   .seg{display:grid;gap:28px;align-items:center}
   @media(min-width:880px){.seg{grid-template-columns:1fr 1fr}}
@@ -109,7 +114,7 @@
           <a class="btn btn-gold" data-contato href="https://ig.me/m/gestaonotax">💬 Quero na minha escola</a>
           <a class="btn btn-ghost" href="#funcoes">Ver o que faz</a>
         </div>
-        <div class="proof"><span>Sem instalar app</span><span>Bateria e segmentos</span><span>Já em uso no carnaval</span></div>
+        <div class="proof"><span>Sem instalar app</span><span>Bateria e segmentos</span><span>Já usado por Beija-Flor, Botafogo e Tubarão</span></div>
       </div>
       <div class="stack" id="heroStack" aria-hidden="true">
         <img src="/img/vitrine-1.jpg" alt="" width="1080" height="1350">
@@ -131,6 +136,18 @@
         <article class="feat"><div class="ic">📸</div><h3>Stories da escola</h3><p>Um Instagram interno de 24 horas, com enquete, reações e corrente. Fechado para quem é da escola.</p><details><summary>Ver mais</summary><ul><li>Stories que somem em 24 horas, só para quem é da escola</li><li>Editor com filtros, texto, figurinhas e desenho</li><li>Caixinhas de enquete, “Eu vou!”, pergunta, quiz e contagem regressiva</li><li>Reações, “visto por” e marcação de pessoas</li><li>Melhores amigos e correntes do tipo “sua vez”</li><li>Denúncia e moderação pela gestão; selo azul para a diretoria</li></ul></details></article>
         <article class="feat"><div class="ic">🧒</div><h3>Escola mirim</h3><p>Responsável legal obrigatório, ficha de saúde e cartão de emergência para cada criança.</p><details><summary>Ver mais</summary><ul><li>Menor de 18 anos só se cadastra com um responsável legal</li><li>Ficha de saúde: tipo sanguíneo, alergias, remédios, plano ou SUS e contato de emergência</li><li>Cartão de emergência junto da carteirinha</li><li>QR de emergência no verso, que só abre com o login da direção</li><li>Lista de responsáveis e fichas de saúde em Excel ou PDF</li><li>A direção aprova cada cadastro</li></ul></details></article>
         <article class="feat"><div class="ic">🎮</div><h3>Jogos e ranking</h3><p>Quiz de samba e “Conheça o Sistema”: o integrante aprende a usar jogando.</p><details><summary>Ver mais</summary><ul><li>Jogo da memória com os rostos do próprio elenco</li><li>Quiz de samba e carnaval e verdadeiro ou falso</li><li>“Conheça o Sistema”: perguntas sobre o app, para aprender usando</li><li>As perguntas mudam todo dia e não se repetem para a mesma pessoa</li><li>Ranking com os melhores de cada jogo</li><li>Jogo próprio para mestres e diretores</li></ul></details></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="escolas">
+    <div class="wrap">
+      <p class="eyebrow">Quem já usa</p>
+      <h2>Escolas que já estão com a notaX.</h2>
+      <div class="escolas">
+        <article class="escola"><h3>Beija-Flor de Nilópolis</h3><p>Gestão de segmentos, Bateria Soberana e a escola mirim Sonho do Beija-Flor.</p></article>
+        <article class="escola"><h3>Botafogo Samba Clube</h3><p>Gestão de segmentos e a bateria Ritmo Alvinegro.</p></article>
+        <article class="escola"><h3>Tubarão de Mesquita</h3><p>Credenciamento e gestão da Bateria Tubarão Feroz.</p></article>
       </div>
     </div>
   </section>
