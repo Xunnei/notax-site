@@ -20,7 +20,7 @@ Os sistemas das escolas vivem em outro repositório (`xunnei/sistemas-escolas`);
 
 ## Regras de postagem (decididas com o dono)
 - **Só sai o que estiver `aprovado`.** Post novo nasce `rascunho`; vira `aprovado` só quando o dono escrever "pode postar" (pode ser um lote).
-- Robô (`.github/workflows/instagram.yml`) roda 09:07, 13:07 e 19:07 de Brasília, posta **1 por rodada**, e post vencido há mais de 72h não sai sozinho (abre aviso). Falha = Issue no repositório.
+- Robô (`.github/workflows/instagram.yml`) roda de hora em hora (:07) das 9h às 22h de Brasília (o GitHub atrasa o agendamento), posta **1 por rodada**, e post vencido há mais de 72h não sai sozinho (abre aviso). Falha = Issue no repositório.
 - Prévia de tudo em `https://notax.xunei.com.br/fila`.
 - Formatos do Instagram: feed 1:1 (`q`) ou 4:5 (`f`), story 9:16 (`s`). Imagem sempre JPG (exigência da API).
 - Calendário: manter a fila com ~2 semanas à frente. Conteúdo só do que o sistema realmente faz (ver CLAUDE.md do sistemas-escolas). **Nunca citar escola cliente pelo nome sem o dono autorizar.**
@@ -37,6 +37,6 @@ Os sistemas das escolas vivem em outro repositório (`xunnei/sistemas-escolas`);
 1. ~~"Pode postar"~~ FEITO em 25/11: os 10 posts (26/11 a 12/12) estão `aprovado`. Só saem quando o `IG_TOKEN` existir; post vencido há mais de 72h não sai sozinho (reagendar).
 2. ~~Token do Instagram~~ FEITO em 25/11: app Meta `notaX Postagem` (ID 1514125850573240), caso de uso Instagram com **login unificado**, ligado ao portfólio **Xunei** (o @gestaonotax foi adicionado ao portfólio). Token de **usuário do sistema** (começa com EAA, **não vence**) salvo em `IG_TOKEN`; robô usa graph.facebook.com e `IG_USER_ID=17841480891596692` (fixo no instagram.yml). Robô CONFERE que a conta é @gestaonotax antes de postar. Teste "conferir" passou (25/11). Se precisar gerar de novo: developers.facebook.com → app → Casos de uso → Personalizar → API setup with Unified login → etapa 2 → Gerar token (em janela anônima, logado no Facebook pessoal "Junior Xunei"; o navegador normal fica preso na conta empresarial). Botão de teste: Actions → Postar no Instagram → Run workflow → "conferir".
 3. ~~Renovação~~ NÃO precisa: token não vence (`token-instagram.yml` só age se o token começar com "IG").
-5. **1º post real: 26/11 às 19h07** (apresentação). Conferir se saiu; se falhar, o robô abre Issue "⚠️ Postagem do Instagram falhou". Risco conhecido: app em modo Desenvolvimento/não publicado pode barrar a publicação; aí avaliar publicar o app.
+5. ~~1º post real~~ SAIU em 26/11 (https://www.instagram.com/p/DgOLOZeIxK1/), disparado à mão às 19h26 porque o agendador do GitHub atrasou ~5h. A publicação pela API funcionou com o app em modo desenvolvimento. Bug corrigido: a anotação do `publicado` falhava (render exigia Playwright); anotado à mão. Agendamento passou a ser de hora em hora.
 6. ~~PR dos Planos~~ JUNTADO em 26/11 a pedido do dono ("pode publicar os planos"; a tabela foi decidida na conversa session_01RdUXs494VUgFCrCW8pzJru). Preço de fundadora = **40% de desconto no 1º ano** (decidido pelo dono em 26/11; o texto antigo dizia "metade", corrigido). Nunca escrever "metade".
 4. ~~Teste do cadeado~~ CONFIRMADO pelo dono em 26/11: `/fila` pede login, página inicial abre direto.

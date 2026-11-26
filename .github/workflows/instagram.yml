@@ -1,8 +1,8 @@
-# Posta no Instagram o que venceu na fila (status "aprovado"). 09:07, 13:07 e 19:07 de Brasília.
+# Posta no Instagram o que venceu na fila (status "aprovado"). Olha de hora em hora, das 9h às 22h de Brasília (o GitHub atrasa o agendamento; mais rodadas = post mais perto do horário).
 name: Postar no Instagram
 on:
   schedule:
-    - cron: '7 12,16,22 * * *'
+    - cron: '7 0,1,12-23 * * *'
   workflow_dispatch:
     inputs:
       simular: { description: 'Só simular (não posta)', type: boolean, default: false }
