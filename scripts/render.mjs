@@ -5,7 +5,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
-const { chromium } = createRequire(import.meta.url)('playwright');
 import { RAIZ, DIR_ARTES, lerPosts, validar, nomeImagem, hashArte } from './lib.mjs';
 
 const SITE = path.join(RAIZ, 'site');
@@ -40,6 +39,7 @@ const SO_INDICE = process.argv.includes('--so-indice'); // não desenha nada; s�
 let s, browser, page;
 async function pagina() { // o navegador só abre se alguma imagem precisar ser desenhada
   if (page) return page;
+  const { chromium } = createRequire(import.meta.url)('playwright'); // só carrega se precisar desenhar
   s = await servidor();
   browser = await chromium.launch();
   page = await browser.newPage();

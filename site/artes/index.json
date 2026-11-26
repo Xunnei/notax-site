@@ -1,3 +1,18 @@
 {
- "posts": []
+ "posts": [
+  {
+   "id": "2026-11-26-apresentacao",
+   "quando": "2026-11-26T19:00:00-03:00",
+   "tipo": "feed",
+   "fmt": "q",
+   "imagens": [
+    "/artes/2026-11-26-apresentacao-1-396ac0441f.jpg"
+   ],
+   "legenda": "Chegou a notaX. 🥁\nCarteirinha, presença, convocação e avisos da sua escola de samba num lugar só, no celular de cada integrante.\n\nO X é a nota 10: o objetivo de todo quesito. É pra lá que a gente leva a gestão da sua escola.\n\n#escoladesamba #carnaval #bateria #gestao #notax",
+   "publicado": {
+    "em": "2026-11-26T22:26:59.000Z",
+    "permalink": "https://www.instagram.com/p/DgOLOZeIxK1/"
+   }
+  }
+ ]
 }
