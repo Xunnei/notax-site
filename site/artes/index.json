@@ -1,6 +1,20 @@
 {
  "posts": [
   {
+   "id": "2026-11-27-apresentacao-story",
+   "quando": "2026-11-27T12:00:00-03:00",
+   "tipo": "story",
+   "fmt": "s",
+   "imagens": [
+    "/artes/2026-11-27-apresentacao-story-1-ff30e57b9d.jpg"
+   ],
+   "legenda": "",
+   "publicado": {
+    "em": "2026-11-27T21:05:24.871Z",
+    "permalink": "https://www.instagram.com/stories/gestaonotax/4039899012022441795"
+   }
+  },
+  {
    "id": "2026-11-26-apresentacao",
    "quando": "2026-11-26T19:00:00-03:00",
    "tipo": "feed",
